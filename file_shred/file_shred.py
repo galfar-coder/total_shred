@@ -1,4 +1,5 @@
 import os, sys, platform
+
 def shredder():
 	print "Shredder v1"
 	print "Please enter a valid file name"
@@ -21,8 +22,14 @@ def shredder():
 	overwrite.close()
 	if platform.system() == "Windows":
 		os.system("cipher /w:C:")
+	#elif platform.system() == "Linux":
+	#	overwrite empty space in partition from /dev/urandom
 	else:
 		return False
 	os.remove(input)
+	
+def main():
+	shredder()
+	
 if __name__ == '__main__':
-    shredder()
+    main()
