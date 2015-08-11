@@ -23,7 +23,8 @@ def shredder():
 	if platform.system() == "Windows":
 		os.system("cipher /w:C:")
 	elif platform.system() == "Linux":
-		os.system("shred -vunz %s", %(input))
+		os.system("cat /dev/urandom > all.file")
+		os.system("shred -vunz all.file")
 	else:
 		return False
 	os.remove(input)
