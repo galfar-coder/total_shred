@@ -22,8 +22,8 @@ def shredder():
 	overwrite.close()
 	if platform.system() == "Windows":
 		os.system("cipher /w:C:")
-	#elif platform.system() == "Linux":
-	#	overwrite empty space in partition from /dev/urandom
+	elif platform.system() == "Linux":
+		os.system("shred -vunz %s", %(input))
 	else:
 		return False
 	os.remove(input)
