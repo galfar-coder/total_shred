@@ -6,7 +6,6 @@ def shredder():
 	print("Permanent File Shredder")
 	userInput = input("File Name: ")
 	shred_obj = open(userInput, "rb+")
-	#os.path.getsize(input) 
 	size = os.stat(userInput)[6] 
 	garbage = os.urandom(size)
 	shred_obj.write(garbage)
@@ -14,13 +13,18 @@ def shredder():
 	overwrite = open(userInput,"w")
 	overwrite.close()
 	os.remove(userInput)
-	if platform.system() == "Windows":
-		os.system("cipher /w:C:")
-	elif platform.system() == "Linux":
-		os.system("cat /dev/urandom > all.file")
-		os.system("shred -vunz all.file")
+	paranoid = input("Paranoid deletion Y/N: ")
+	if paranoid == "Y":
+		if platform.system() == "Windows":
+			os.system("cipher /w:C:")
+		elif platform.system() == "Linux":
+			os.system("cat /dev/urandom > all.file")
+			os.system("shred -vunz all.file")
+		else:
+			return False
 	else:
-		return False
+		pass
+	print("{} has been derezzed".format(userInput))
 	
 def main():
 	shredder()
