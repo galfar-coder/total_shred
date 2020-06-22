@@ -8,7 +8,7 @@ def shredder():
 		try:
 			print("Permanent File Shredder")
 			userInput = input("File Name or Exit: ")
-			if userInput == "Exit" or userInput == "exit":
+			if userInput.lower() == "exit":
 				session = False
 				print("Session terminated")
 			else:
@@ -23,7 +23,7 @@ def shredder():
 				os.remove(userInput)
 				print("The author is not responsible for any unintended side effects of using the paranoid deletion option")
 				paranoid = input("Paranoid deletion Y/N: ")
-				if paranoid == "Y":
+				if paranoid.lower() == "y":
 					if platform.system() == "Windows":
 						os.system("cipher /w:C:")
 					elif platform.system() == "Linux":
@@ -33,9 +33,9 @@ def shredder():
 						pass
 				else:
 					pass
-				print("{} has been derezzed".format(userInput))
+				print(f"{userInput} has been derezzed")
 		except Exception as e:
-			print(e)
+			print("Exception",e)
 	
 def main():
 	shredder()
